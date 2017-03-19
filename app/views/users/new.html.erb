@@ -1,0 +1,11 @@
+<h5>Hello!</h5>
+
+<%= simple_form_for @user do |f| %>
+  <%= f.input :email %>
+  <%= f.input :username %>
+  <%= f.input :password %>
+  <%= f.button :submit %>
+
+<% end %>
+
+<!-- add the email line after you set up the emailer  -->
