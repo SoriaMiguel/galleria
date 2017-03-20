@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
 
   def new
-
   end
 
   def create
@@ -9,10 +8,10 @@ class SessionsController < ApplicationController
       if @user && @user.authenticate(params[:session][:password])
         session[:user_id] = @user.id
         flash[:success] = "Hey there, #{@user.username}"
-        redirect_to :root
+        redirect_to @user
       else
         flash[:danger] = "You entered the wrong username and/or password.  Please try again."
-        redirect_to :login_path
+        redirect_to login_path
       end
   end
 

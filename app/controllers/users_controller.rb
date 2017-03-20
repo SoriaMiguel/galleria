@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  def index
+    @users = User.all
+  end
   def new
     @user =  User.new
   end
@@ -12,15 +15,13 @@ class UsersController < ApplicationController
       UserMailer.signup(@user).deliver
       session[:user_id] = @user.id
       redirect_to @user
-      # redirect_to "/users/#{@user.id}"
-      # redirect_to controller: "users", action: "show", id: @user.id
-
-      # url_for(@user)
-      #   - Check class name (User)
-      #   - "#{class_name}_path(id: thing.id)"
     else
       render :new
     end
+  end
+
+  def show
+    @user = User.find_by(id: params[:id])
   end
 
 
@@ -28,11 +29,11 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :password, :email)
   end
 
   def find_user
-    @user = find(params[:id])
+    @user = User.find(params[:id])
   end
 
 end

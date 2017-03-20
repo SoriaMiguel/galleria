@@ -1,7 +1,7 @@
-<div class="container">
-  <div class="jumbotron">
-    <h1>Welcome to Galleria</h1>
-    <p></p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+<div class="media">
+  <div class="media-left">
+    <% @users.each do |user| %>
+      <%= simple_format user.username %>
+      <strong>Posted by <%= link_to user.username, user.gallery.title, class: "btn btn-default" %> <%= link_to "#{time_ago_in_words(gallery.created_at)} ago" %>
+    <% end %>
   </div>
-</div>

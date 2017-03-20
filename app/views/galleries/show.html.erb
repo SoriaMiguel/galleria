@@ -1,14 +1,7 @@
-<div class="media">
-  <div class="media-left">
-    <%= link_to gallery.user do %>
-    <% end %>
-  </div>
-  <div class="media-body">
-    <%= simple_format gallery.body %>
-    <strong>Posted by <%= link_to gallery.user.username, gallery.user, class: "btn btn-default" %> <%= link_to "#{time_ago_in_words(chirp.created_at)} ago", chirp %>
-      <% if gallery.is_owner? current_user %>
-        <%= button_to "EXTERMINATE!!", chirp, method: :delete, class: "btn btn-danger" %>
-      <% end %>
-    </strong>
-  </div>
-</div>
+<h3>Should show all the images for this gallery</h3>
+
+<%= link_to "Add Some Pictures", new_photo_path, class: "btn btn-primary" %>
+<% @gallery.photos.each do |photo| %>
+  <%#= image_tag photo.url %>
+  <h6><%= photo.title %></h6>
+<% end %>

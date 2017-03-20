@@ -2,6 +2,7 @@ class UserMailer < ApplicationMailer
 
   def signup(user)
    @user = user
+   puts user.inspect
    mail(to: @user.email, subject: "Cogratulations on joining Galleria!")
   end
 

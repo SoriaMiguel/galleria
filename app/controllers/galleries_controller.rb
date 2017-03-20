@@ -1,15 +1,24 @@
 class GalleriesController < ApplicationController
 
   def index
+    @galleries = Gallery.all
+  end
+
+  def new
+    @gallery = Gallery.new(params[:user_id])
   end
 
   def show
-    @gallery = gallery.fin(params[:id])
-    @recent_galleries = Gallery.order(created_at: :desc).offset(1).limit(4)
+    @gallery = Gallery.find(params[:id])
   end
 
   def create
-    @gallery = Gallery.new
+    @gallery = current_user.galleries.new(gallery_params)
+    if @gallery.save
+      redirect_to @gallery
+    else
+      render :new
+    end
   end
 
   private

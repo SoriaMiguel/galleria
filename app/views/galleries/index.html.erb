@@ -1,6 +1,12 @@
-<h4>Most Recently Added Photo (as thumbnail)</h4>
-<h5>Title of gallery</h5>
-<h6>date created</h6>
-<button type="button" class="btn btn-danger">Delete Gallery</button>
-<button type="button" class="btn btn-default">Add Photos</button>
+<h4>This page is in memory of the late David from The Iron Yard</h4>
 <button type="button" class="btn btn-success">Share Gallery</button>
+<button type="button" class="btn btn-danger">Delete Gallery</button>
+ <%= link_to "Make New Gallery", new_gallery_path(@user), class: "btn btn-default" %>
+
+<div class="media">
+  <div class="media-left">
+    <% @galleries.each do |gallery| %>
+      <%= simple_format gallery.title %>
+      <strong>Posted by <%= link_to gallery.user.username, gallery.user, class: "btn btn-default" %> <%= link_to "#{time_ago_in_words(gallery.created_at)} ago", @gallery %>
+    <% end %>
+  </div>

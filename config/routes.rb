@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
 
-  resources :users do
-    resources :galleries do
-      resources :photos
+  resources :users, shallow: true do
+    member do
+      resources :galleries do
+        member do
+          resources :photos
+        end
+      end
     end
   end
 
   root 'users#index'
 
-  get "/login" => 'sesions#new', as: :login
+  get "/login" => 'sessions#new', as: :login
   post "/login" => 'sessions#create'
   delete "/logout" => 'sessions#destroy', as: :logout
   # get "//galleries/:gallery_id/photos/:id"
