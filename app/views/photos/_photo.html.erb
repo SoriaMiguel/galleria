@@ -1,0 +1,5 @@
+<%= photo.title %>
+
+
+<%= image_tag photo.image.versions[:thumbnail].url, class: "img-responsive" if photo.image? %>
+<%= button_to "Delete This Picture", photo, method: :delete, class: "btn btn-danger" %>

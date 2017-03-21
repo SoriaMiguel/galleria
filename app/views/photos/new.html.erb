@@ -1,4 +1,6 @@
 <%= simple_form_for [@gallery, @photo] do |f| %>
   <%= f.input :title %>
+  <%= f.input :remote_image_url %>
+  <%= f.input :image %>
   <%= f.button :submit %>
 <% end%>

@@ -1,7 +1,8 @@
 <h3>Should show all the images for this gallery</h3>
+<h4> Welcome <%= current_user.username %>!</h4>
+
 
 <%= link_to "Add Some Pictures", new_photo_path, class: "btn btn-primary" %>
-<% @gallery.photos.each do |photo| %>
-  <%#= image_tag photo.url %>
-  <h6><%= photo.title %></h6>
-<% end %>
+
+<h3>Photos</h3>
+<%= render @gallery.photos %>
